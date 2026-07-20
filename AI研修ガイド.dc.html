@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta charset="utf-8">
+<title>アイデアを、AIツールで形にする一日</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@600;700;800&family=Zen+Maru+Gothic:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  html,body{margin:0;padding:0;background:#FFF9F7;}
+  body{font-family:'Zen Maru Gothic',sans-serif;color:#4A3B3E;-webkit-font-smoothing:antialiased;}
+  a{color:#D96A87;text-decoration:none;}
+  a:hover{color:#B84A68;text-decoration:underline;}
+  ::selection{background:#F9CFDB;}
+</style>
+</helmet>
+<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#F9CFDB"/><text x="50" y="62" font-size="34" text-anchor="middle" fill="#B84A68" font-family="serif" font-weight="bold">AI</text></svg></template>
+<div style="min-width:980px;background:#FFF9F7;">
+
+  <!-- Hero -->
+  <header data-screen-label="ヒーロー" style="position:relative;">
+    <img src="uploads/土田さんAIセミナー.png" alt="アイデアを、AIツールで形にする一日" style="display:block;width:100%;height:auto;">
+    <div style="height:6px;background:linear-gradient(90deg,#F6A8BC,#F3C0A6,#BFDCB4,#A9C6E8,#CDB4E3);"></div>
+  </header>
+
+  <!-- Workflow -->
+  <section data-screen-label="ワークフロー" style="max-width:1100px;margin:0 auto;padding:88px 40px 72px;">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center;">
+      <span style="font-size:13px;letter-spacing:.3em;font-weight:700;color:#D96A87;">WORKFLOW</span>
+      <h2 style="margin:0;font-family:'Shippori Mincho B1',serif;font-size:34px;font-weight:700;color:#3E2F33;">アイデアから形にするまでの流れ</h2>
+      <p style="margin:0;max-width:560px;font-size:15px;line-height:1.9;color:#8A7378;">5つのツールは、それぞれ得意な工程を担当します。順番に使うことで、思いつきを最短距離でカタチにできます。</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:48px;">
+      <sc-for list="{{ steps }}" as="s" hint-placeholder-count="5">
+        <div style="position:relative;background:{{ s.bg }};border-radius:20px;padding:26px 18px 24px;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;">
+          <span style="font-size:11px;letter-spacing:.2em;font-weight:700;color:{{ s.accent }};">STEP {{ s.n }}</span>
+          <span style="font-size:18px;font-weight:900;color:#3E2F33;">{{ s.title }}</span>
+          <span style="width:52px;height:52px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;font-family:'Shippori Mincho B1',serif;font-size:17px;font-weight:800;color:{{ s.accent }};box-shadow:0 4px 12px rgba(120,70,90,.10);">{{ s.mark }}</span>
+          <span style="font-size:13px;line-height:1.75;color:#6E5A60;">{{ s.desc }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- Tools -->
+  <section data-screen-label="ツール紹介" style="background:linear-gradient(180deg,#FDF0F3 0%,#FFF9F7 100%);padding:80px 40px;">
+    <div style="max-width:1100px;margin:0 auto;">
+      <div style="display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center;">
+        <span style="font-size:13px;letter-spacing:.3em;font-weight:700;color:#D96A87;">TOOLS</span>
+        <h2 style="margin:0;font-family:'Shippori Mincho B1',serif;font-size:34px;font-weight:700;color:#3E2F33;">セミナーで扱う5つのツール</h2>
+        <p style="margin:0;font-size:15px;color:#8A7378;">それぞれの役割と、実際の使いどころを解説します。</p>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:48px;">
+        <sc-for list="{{ tools }}" as="t" hint-placeholder-count="4">
+          <div style="background:#fff;border-radius:24px;padding:32px 34px;box-shadow:0 8px 28px rgba(150,90,110,.08);display:flex;flex-direction:column;gap:16px;">
+            <div style="display:flex;align-items:center;gap:16px;">
+              <span style="width:54px;height:54px;border-radius:50%;background:{{ t.badgeBg }};color:{{ t.badgeFg }};display:flex;align-items:center;justify-content:center;font-weight:900;font-size:16px;">{{ t.mark }}</span>
+              <div style="display:flex;flex-direction:column;gap:2px;">
+                <span style="font-family:'Shippori Mincho B1',serif;font-size:22px;font-weight:700;color:#3E2F33;">{{ t.name }}</span>
+                <span style="font-size:13px;font-weight:700;color:{{ t.badgeFgDark }};">{{ t.role }}</span>
+              </div>
+            </div>
+            <p style="margin:0;font-size:14px;line-height:1.95;color:#6E5A60;">{{ t.desc }}</p>
+            <div style="display:flex;gap:8px;">
+              <span style="font-size:12px;font-weight:700;color:{{ t.badgeFgDark }};background:{{ t.tagBg }};border-radius:999px;padding:5px 14px;">{{ t.tag1 }}</span>
+              <span style="font-size:12px;font-weight:700;color:{{ t.badgeFgDark }};background:{{ t.tagBg }};border-radius:999px;padding:5px 14px;">{{ t.tag2 }}</span>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+
+      <!-- Claude feature -->
+      <div style="margin-top:26px;background:#fff;border-radius:28px;box-shadow:0 10px 32px rgba(150,90,110,.10);overflow:hidden;">
+        <div style="background:linear-gradient(90deg,#F7E8DC,#FBEFF2);padding:30px 40px;display:flex;align-items:center;gap:18px;">
+          <span style="width:58px;height:58px;border-radius:50%;background:#C88A5F;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:17px;">Cl</span>
+          <div style="display:flex;flex-direction:column;gap:3px;">
+            <span style="font-family:'Shippori Mincho B1',serif;font-size:24px;font-weight:700;color:#3E2F33;">Claude の使い方</span>
+            <span style="font-size:14px;font-weight:700;color:#A9704A;">文章整え・壁打ち・思考整理に強いパートナー</span>
+          </div>
+        </div>
+        <div style="padding:32px 40px 38px;display:flex;flex-direction:column;gap:26px;">
+          <p style="margin:0;font-size:14px;line-height:2;color:#6E5A60;">ChatGPTが「発散」と「調査」に強い一方、Claudeは長い文章の整理・要約・トーン調整や、じっくり考えを深める壁打ちに向いています。今回のワークフローでは、以下の場面で活用します。</p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:22px;">
+            <div style="background:#FBF3EC;border-radius:18px;padding:24px 26px;display:flex;flex-direction:column;gap:12px;">
+              <span style="font-size:15px;font-weight:900;color:#A9704A;">こんな場面で使う</span>
+              <ul style="margin:0;padding:0 0 0 1.2em;display:flex;flex-direction:column;gap:8px;font-size:13.5px;line-height:1.8;color:#6E5A60;">
+                <li>ChatGPTで広げたアイデアを、文章として整理・要約する</li>
+                <li>リサーチ結果や長い資料を読み込ませて要点を抽出する</li>
+                <li>事業計画やピッチ文章のトーン・言葉遣いを調整する</li>
+                <li>1つのテーマを深く掘るための「思考の壁打ち」相手にする</li>
+              </ul>
+            </div>
+            <div style="background:#FBF3EC;border-radius:18px;padding:24px 26px;display:flex;flex-direction:column;gap:12px;">
+              <span style="font-size:15px;font-weight:900;color:#A9704A;">使い方のコツ</span>
+              <ul style="margin:0;padding:0 0 0 1.2em;display:flex;flex-direction:column;gap:8px;font-size:13.5px;line-height:1.8;color:#6E5A60;">
+                <li>資料（PDF・テキスト）をそのまま貼り付けて要約・添削させる</li>
+                <li>「結論から言わず、一緒に考えるように答えて」と指示すると深く議論できる</li>
+                <li>長文の一貫性チェックや誤字脱字の見直しに活用する</li>
+                <li>Projects機能で資料をまとめておくと、同じ文脈で継続的に相談できる</li>
+              </ul>
+            </div>
+          </div>
+          <sc-if value="{{ showPrompt }}" hint-placeholder-val="{{ true }}">
+            <div style="background:#4A3B3E;border-radius:16px;padding:22px 28px;display:flex;flex-direction:column;gap:8px;">
+              <span style="font-size:11px;letter-spacing:.25em;font-weight:700;color:#E8B48C;">PROMPT EXAMPLE</span>
+              <p style="margin:0;font-size:14px;line-height:1.9;color:#F5E9E0;">「このリサーチ結果を読んで、初心者向けに3つのポイントに要約してください。その上で、抜けている視点があれば指摘し、一緒に深掘りさせてください。」</p>
+            </div>
+          </sc-if>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Agenda -->
+  <section data-screen-label="アジェンダ" style="max-width:900px;margin:0 auto;padding:80px 40px;">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center;">
+      <span style="font-size:13px;letter-spacing:.3em;font-weight:700;color:#D96A87;">AGENDA</span>
+      <h2 style="margin:0;font-family:'Shippori Mincho B1',serif;font-size:34px;font-weight:700;color:#3E2F33;">当日の進め方（例）</h2>
+      <p style="margin:0;font-size:15px;color:#8A7378;">実際に手を動かしながら、5つのツールを順番に体験していきます。</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:0;margin-top:46px;">
+      <sc-for list="{{ agenda }}" as="a" hint-placeholder-count="5">
+        <div style="display:grid;grid-template-columns:96px 28px 1fr;gap:0 20px;">
+          <span style="font-family:'Shippori Mincho B1',serif;font-size:16px;font-weight:800;color:{{ a.accent }};padding-top:2px;text-align:right;">Part {{ a.n }}</span>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:4px;">
+            <span style="width:14px;height:14px;border-radius:50%;background:{{ a.accent }};border:3px solid #fff;box-shadow:0 0 0 2px {{ a.accent }};"></span>
+            <sc-if value="{{ a.line }}" hint-placeholder-val="{{ true }}"><span style="width:2px;flex:1;background:#F0D8DE;"></span></sc-if>
+          </div>
+          <div style="padding:0 0 34px;display:flex;flex-direction:column;gap:6px;">
+            <span style="font-size:18px;font-weight:900;color:#3E2F33;">{{ a.title }}</span>
+            <span style="font-size:14px;line-height:1.8;color:#8A7378;">{{ a.desc }}</span>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <footer data-screen-label="クロージング" style="background:linear-gradient(135deg,#F9D2DD 0%,#FBE4D8 55%,#EDE0F2 100%);padding:88px 40px;text-align:center;">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:18px;">
+      <h2 style="margin:0;font-family:'Shippori Mincho B1',serif;font-size:40px;font-weight:800;color:#3E2F33;letter-spacing:.04em;">アイデアを、今日から動かす</h2>
+      <p style="margin:0;font-size:15px;line-height:1.9;color:#6E5A60;">5つのAIツールを実際に触りながら、あなたの企画を一歩先へ進めましょう。</p>
+      <div style="display:flex;gap:10px;margin-top:8px;">
+        <sc-for list="{{ marks }}" as="m" hint-placeholder-count="5">
+          <span style="width:44px;height:44px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:13px;color:{{ m.fg }};box-shadow:0 4px 12px rgba(150,90,110,.15);">{{ m.mark }}</span>
+        </sc-for>
+      </div>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showPromptExample&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;表示&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const steps = [
+      { n: 1, title: 'アイデア創出', mark: 'GPT', desc: 'ChatGPTで発想を広げ、壁打ちする', bg: '#FCE4EA', accent: '#D96A87' },
+      { n: 2, title: '市場リサーチ', mark: 'GPT', desc: 'ChatGPTで競合・ニーズを調査', bg: '#FCEBDD', accent: '#D98A4A' },
+      { n: 3, title: 'MVP作成', mark: 'Lv', desc: 'Lovableでプロトタイプを試作', bg: '#E7F2E1', accent: '#6FA05A' },
+      { n: 4, title: 'プロジェクト管理', mark: 'No', desc: 'Notionで進行・タスクを一元管理', bg: '#E4EDF8', accent: '#5A82B8' },
+      { n: 5, title: '資料・発信', mark: 'Cv', desc: 'Canvaでプレゼン・マーケ素材を作成', bg: '#EEE6F6', accent: '#8A6AB8' },
+    ];
+    const tools = [
+      { mark: 'GPT', name: 'ChatGPT', role: 'アイデア創出・市場リサーチ', badgeBg: '#DFF0E6', badgeFg: '#2E8B62', badgeFgDark: '#2E8B62', tagBg: '#EAF6EF', tag1: '発散思考', tag2: 'リサーチ',
+        desc: '企画の壁打ち相手として発想を広げ、競合や市場のニーズをまとめて調査。プロンプト次第で「調べる」から「考える」まで幅広くカバーします。' },
+      { mark: 'Lv', name: 'Lovable', role: 'MVPプロトタイプ作成', badgeBg: '#FCE0E8', badgeFg: '#D9476F', badgeFgDark: '#C93A62', tagBg: '#FBEDF1', tag1: '試作・検証', tag2: 'ノーコード',
+        desc: '自然な文章で指示するだけで、動くWebアプリのプロトタイプを生成。コードを書かずにアイデアを「触れる形」にでき、検証スピードが一気に上がります。' },
+      { mark: 'No', name: 'Notion', role: 'プロジェクト管理', badgeBg: '#EBE7E2', badgeFg: '#3E3630', badgeFgDark: '#5A4F45', tagBg: '#F2EFEA', tag1: 'タスク管理', tag2: '情報の一元化',
+        desc: 'アイデア・タスク・議事録・資料を1か所に集約。データベースで進行状況を可視化し、チームで同じ情報を見ながら前に進められます。' },
+      { mark: 'Cv', name: 'Canva', role: 'プレゼン資料・マーケティング素材', badgeBg: '#DDEBF7', badgeFg: '#3A7BB8', badgeFgDark: '#3A7BB8', tagBg: '#EAF3FA', tag1: 'デザイン', tag2: '発信・広報',
+        desc: 'テンプレートを使ってプレゼン資料・チラシ・SNS素材をスピーディーに制作。デザインの専門知識がなくても、見栄えの良い発信物を仕上げられます。' },
+    ];
+    const agenda = [
+      { n: 1, title: 'ChatGPTでアイデア創出＆市場リサーチ', desc: '壁打ちプロンプトの型を学び、自分のアイデアを深掘り・検証する', accent: '#D96A87', line: true },
+      { n: 2, title: 'Claudeで思考と文章を整理する', desc: 'リサーチ結果を要約し、企画書の文章として整える', accent: '#C88A5F', line: true },
+      { n: 3, title: 'Lovableで動くMVPを作る', desc: 'アイデアをそのままプロトタイプ化し、触って検証する', accent: '#6FA05A', line: true },
+      { n: 4, title: 'Notionでプロジェクトを管理する', desc: 'タスク・議事録・資料をひとつのワークスペースに集約する', accent: '#5A82B8', line: true },
+      { n: 5, title: 'Canvaで資料・発信物を仕上げる', desc: 'プレゼン資料とマーケティング素材をその場で完成させる', accent: '#8A6AB8', line: false },
+    ];
+    const marks = [
+      { mark: 'GPT', fg: '#2E8B62' }, { mark: 'Cl', fg: '#C88A5F' }, { mark: 'Lv', fg: '#D9476F' },
+      { mark: 'No', fg: '#3E3630' }, { mark: 'Cv', fg: '#3A7BB8' },
+    ];
+    return { steps, tools, agenda, marks, showPrompt: this.props.showPromptExample ?? true };
+  }
+}
+</script>
+</body>
+</html>

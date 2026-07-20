@@ -1,0 +1,12 @@
+# IDE / editor cache
+.thumbnail
+
+# Source file (high-res original of hero.jpg, not used by the page)
+uploads/hero-src.png
+
+# Alternate version not used for publishing
+ai-training-guide.dc.html
+
+# OS files
+.DS_Store
+Thumbs.db
